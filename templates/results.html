@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .result-box {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            border: 3px solid #4CAF50;
+            border-radius: 8px;
+        }
+
+        .pass-fail {
+            font-size: 36px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+        .car-details {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">MOT Prediction Result</h1>
+        <h2 class="car-details">{{ carMake }} {{ carModel }}</h2>
+        <div class="result-box">
+            <h2 class="pass-fail">{{ passOrFail }}</h2>
+            <p>With a probability of: {{ passOrFailprob }}%</p>
+        </div>
+
+        <h3>Predicted Fault Codes & Probabilities:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fault Code</th>
+                    <th>Probability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ first }}</td>
+                    <td>{{ firstprob }}%</td>
+                </tr>
+                <tr>
+                    <td>{{ second }}</td>
+                    <td>{{ secondprob }}%</td>
+                </tr>
+                <tr>
+                    <td>{{ third }}</td>
+                    <td>{{ thirdprob }}%</td>
+                </tr>
+                <!-- You can continue to add more rows as needed -->
+            </tbody>
+        </table>
+        <p>More details about specific fault codes can be found on the <a href="https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles">UK Government website</a>.</p>
+    </div>
+</body>
+</html>
